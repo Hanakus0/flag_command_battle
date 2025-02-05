@@ -1,8 +1,7 @@
 // import Enemy from './enemy';
 import Message from './message.js';
 /**
- * メッセージクラス
- * コマンドバトルのメッセージ表示に関するクラス
+ * 味方キャラクラス
  * @constructor
 **/
 class Friend {
@@ -20,7 +19,13 @@ class Friend {
         this.command = ""; // 選択されたコマンド
         this.target = null; // 初期値をnullに
     }
-    // 行動する
+    // 表示用のパラメータを返す
+    getMainParameter() {
+        return "<b>" + this.name + "</b><br>"
+            + "体力 " + this.hp + "<br>"
+            + "薬草 " + this.herb + "<br>";
+    }
+    /*選択コマンド -> 行動する*/
     action() {
         if (this.hp > 0) {
             // コマンドに応じた処理を行う
@@ -38,7 +43,7 @@ class Friend {
             }
         }
     }
-    // 攻撃する
+    /*選択コマンド -> 攻撃する*/
     attack() {
         // 攻撃相手が生存していれば攻撃する
         if (this.target.liveFlag) {
@@ -54,7 +59,7 @@ class Friend {
             Message.printMessage(this.name + "の攻撃・・・<br>" + this.target.name + "は倒れている<br>");
         }
     }
-    // 回復する
+    /*選択コマンド -> 回復する*/
     recovery() {
         // 薬草がない場合
         if (this.herb <= 0) {

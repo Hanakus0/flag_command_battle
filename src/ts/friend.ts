@@ -2,8 +2,7 @@
 import Message from './message.js';
 
 /**
- * メッセージクラス
- * コマンドバトルのメッセージ表示に関するクラス
+ * 味方キャラクラス
  * @constructor
 **/
 class Friend {
@@ -37,7 +36,15 @@ class Friend {
     this.target = null;    // 初期値をnullに
   }
 
-  // 行動する
+  // 表示用のパラメータを返す
+  getMainParameter()
+  {
+    return "<b>" + this.name + "</b><br>"
+            + "体力 " + this.hp + "<br>"
+            + "薬草 " + this.herb + "<br>";
+  }
+
+  /*選択コマンド -> 行動する*/
   action()
   {
     if(this.hp > 0) {
@@ -57,7 +64,7 @@ class Friend {
     }
   }
 
-  // 攻撃する
+  /*選択コマンド -> 攻撃する*/
   attack()
   {
     // 攻撃相手が生存していれば攻撃する
@@ -76,7 +83,7 @@ class Friend {
     }
   }
 
-  // 回復する
+  /*選択コマンド -> 回復する*/
   recovery()
   {
     // 薬草がない場合

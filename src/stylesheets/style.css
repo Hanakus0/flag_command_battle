@@ -36,6 +36,13 @@ div {
   border-radius: 6px;
 }
 
+/* パラメータ（各キャラクター） */
+.parameter {
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+}
+
 /* 敵画像ビュー */
 #enemyImageView {
   display: inline-block;
