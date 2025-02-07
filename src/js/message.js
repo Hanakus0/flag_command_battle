@@ -1,5 +1,11 @@
-"use strict";
+/**
+ * メッセージを表示するクラス
+ */
 class Message {
+    /**
+     * @constructor
+     * インスタンス化しないため不要
+     */
     /**
      * メッセージを表示する
      * @param text 表示するメッセージ
@@ -16,5 +22,4 @@ class Message {
     }
 }
 Message.messageView = document.getElementById('messageView');
-Message.printMessage("あれすの攻撃<br>");
-Message.addMessage("トロルに20のダメージを与えた！<br>");
+export default Message;

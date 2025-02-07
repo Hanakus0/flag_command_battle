@@ -1,3 +1,6 @@
+/**
+ * メッセージを表示するクラス
+ */
 class Message {
   private static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
 
@@ -5,7 +8,6 @@ class Message {
    * @constructor
    * インスタンス化しないため不要
    */
-  
 
   /**
    * メッセージを表示する
@@ -24,5 +26,4 @@ class Message {
   }
 }
 
-Message.printMessage("あれすの攻撃<br>");
-Message.addMessage("トロルに20のダメージを与えた！<br>");
+export default Message;
