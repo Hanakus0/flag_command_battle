@@ -2,7 +2,9 @@
  * メッセージを表示するクラス
  */
 class Message {
-  private static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
+  public static parameterView: HTMLElement = document.getElementById('parameterView') as HTMLElement;
+  public static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
+  public static enemyImageView: HTMLElement = document.getElementById('enemyImageView') as HTMLElement;
 
   /**
    * @constructor
