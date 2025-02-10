@@ -21,5 +21,7 @@ class Message {
         Message.messageView.innerHTML += text;
     }
 }
+Message.parameterView = document.getElementById('parameterView');
 Message.messageView = document.getElementById('messageView');
+Message.enemyImageView = document.getElementById('enemyImageView');
 export default Message;

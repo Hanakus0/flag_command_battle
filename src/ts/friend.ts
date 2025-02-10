@@ -13,7 +13,7 @@ class Friend {
    * @param {number} hp 味方キャラのHP
    * @param {boolean} liveFlag 味方キャラの生存フラグ
    * @param {number} offense 味方キャラの攻撃力
-   * @param {number} speed 味方キャラの速度 
+   * @param {number} speed 味方キャラの速度
    * @param {number} herb 味方キャラの薬草(回復アイテム)の数
    * @param {number} herbPower 味方キャラの回復量
    * @param {string} command 味方キャラの選択されたコマンド
@@ -45,6 +45,19 @@ class Friend {
 
     this.command = "";
     this.target = null;
+  }
+  
+  /**
+   * 表示用のパラメータを返すメソッド
+   * @method getMainParameter
+   * @description パラメータを表示
+   * @return {string}
+   */
+  getMainParameter()
+  {
+    return "<b>" + this.name + "</b><br>"
+            + "体力 " + this.hp + "<br>"
+            + "薬草 " + this.herb + "<br>";
   }
 
   /**

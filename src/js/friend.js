@@ -17,6 +17,17 @@ class Friend {
         this.target = null;
     }
     /**
+     * 表示用のパラメータを返すメソッド
+     * @method getMainParameter
+     * @description パラメータを表示
+     * @return {string}
+     */
+    getMainParameter() {
+        return "<b>" + this.name + "</b><br>"
+            + "体力 " + this.hp + "<br>"
+            + "薬草 " + this.herb + "<br>";
+    }
+    /**
      * 行動するメソッド
      * @method action
      * @description 味方キャラのHPが1以上の場合に、選択されたコマンドに応じて行動を実行する。
