@@ -1,5 +1,7 @@
 import Enemy from "./enemy.js";
 import Message from "./message.js";
+import { characters, command } from "./game.js";
+import { searchLivedcharacterByType, searchCharacterByName } from "./lib.js";
 
 /**
  * 味方キャラクラス
@@ -46,7 +48,7 @@ class Friend {
     this.command = "";
     this.target = null;
   }
-  
+
   /**
    * 表示用のパラメータを返すメソッド
    * @method getMainParameter
@@ -58,6 +60,88 @@ class Friend {
     return "<b>" + this.name + "</b><br>"
             + "体力 " + this.hp + "<br>"
             + "薬草 " + this.herb + "<br>";
+  }
+
+  /**
+   * 表示用のパラメータを返すメソッド
+   * @method getMainParameter
+   * @description コマンドビューに表示するコマンド（HTML）を返す
+   *              eventが"start"の場合
+   *              はじめに表示するコマンド（HTML）を返す
+   *              eventに応じて、表示するコマンド（HTML）を返す、
+   *              または、味方1人のコマンド選択を終了させる"end"を返す
+   * @param {string} event
+   * @return {string}
+   */
+  getCommand(event: string)
+  {
+    // はじめに表示するコマンド
+    if(event === "start") {
+      let text = ['<div><b id="friendName">' + this.name + '</b></div>',
+                  '<div id="attackCommand">攻撃</div>',
+                  '<div id="recoveryCommand">薬草</div>'];
+      return text;
+    }
+
+    // 選択されたコマンドのidまたはclassを取得する
+    if(event.target.id !== "") {
+      this.command = event.target.id;
+    }
+    else {
+      this.command = event.target.className;
+    }
+
+    // 攻撃コマンドが選択されたとき
+    if(this.command === "attackCommand") {
+      // 生存している敵の配列（characters配列の要素番号）を取得する
+      let livedEnemy = searchLivedcharacterByType("enemy");
+      // 生存している敵をコマンドビューに表示するためのHTML
+      let livedEnemyHTML = [];
+
+      // 生存している敵をコマンドビューに表示する
+      for(let c of livedEnemy) {
+        livedEnemyHTML.push('<div class="enemyCommand">' + characters[c].name + '</div>');
+      }
+      livedEnemyHTML.unshift('<div><b id="friendName">' + this.name + '</b></div>');
+
+      return livedEnemyHTML;
+    }
+    // 敵が選択されたとき
+    else if(this.command === "enemyCommand") {
+      // 選択された敵をターゲットとして保存する
+      this.target = characters[searchCharacterByName(event.target.innerText)[0]];
+      return "end";
+    }
+    // 薬草コマンドが選択されたとき
+    else if(this.command === "recoveryCommand") {
+      return "end";
+    }
+  }
+
+  /**
+   * コマンド表示用メソッド
+   * @method getMainParameter
+   * @description 表示されたコマンドにイベントハンドラを登録する
+   * @param {string} event
+   * @return {string}
+   */
+  setEventHandler(event: string)
+  {
+    // コマンドの初期状態の場合
+    if(event === "start") {
+      // 攻撃コマンドのイベントハンドラを設定する
+      attackCommand.addEventListener("click", command.callback);
+      // 回復コマンドのイベントハンドラを設定する
+      recoveryCommand.addEventListener("click", command.callback);
+    }
+
+    // 攻撃コマンドが選択された場合
+    if(this.command === "attackCommand") {
+      let element = document.getElementsByClassName("enemyCommand");
+      for(let i = 0; i < element.length; ++i) {
+        element[i].addEventListener("click", command.callback);
+      }
+    }
   }
 
   /**

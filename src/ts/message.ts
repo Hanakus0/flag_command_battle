@@ -4,6 +4,7 @@
 class Message {
   public static parameterView: HTMLElement = document.getElementById('parameterView') as HTMLElement;
   public static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
+  public static commandView: HTMLElement = document.getElementById('commandView') as HTMLElement;
   public static enemyImageView: HTMLElement = document.getElementById('enemyImageView') as HTMLElement;
 
   /**
