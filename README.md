@@ -1,2 +1,1 @@
-# フラグを立てただけなのに
-* "ロマンシングサガ"というゲームのフラグ管理が厳しいらしく、そこから着想を得た
+https://www.techpit.jp/courses/197/curriculums/200/sections/1335/parts/5377
