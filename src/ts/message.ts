@@ -1,18 +1,29 @@
 /**
- * メッセージクラス
- * コマンドバトルのメッセージ表示に関するクラス
- * @constructor
-**/
-
+ * メッセージを表示するクラス
+ */
 class Message {
-  private static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
+  public static parameterView: HTMLElement = document.getElementById('parameterView') as HTMLElement;
+  public static messageView: HTMLElement = document.getElementById('messageView') as HTMLElement;
+  public static commandView: HTMLElement = document.getElementById('commandView') as HTMLElement;
+  public static enemyImageView: HTMLElement = document.getElementById('enemyImageView') as HTMLElement;
 
-  // メッセージを表示
+  /**
+   * @constructor
+   * インスタンス化しないため不要
+   */
+
+  /**
+   * メッセージを表示する
+   * @param text 表示するメッセージ
+   */
   static printMessage(text: string) {
     Message.messageView.innerHTML = text;
   }
-  
-  // メッセージを追加
+
+  /**
+   * 表示するメッセージを追加する
+   * @param text 表示するメッセージ
+   */
   static addMessage(text: string) {
     Message.messageView.innerHTML += text;
   }

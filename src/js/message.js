@@ -1,17 +1,27 @@
 /**
- * メッセージクラス
- * コマンドバトルのメッセージ表示に関するクラス
- * @constructor
-**/
+ * メッセージを表示するクラス
+ */
 class Message {
-    // メッセージを表示
+    /**
+     * @constructor
+     * インスタンス化しないため不要
+     */
+    /**
+     * メッセージを表示する
+     * @param text 表示するメッセージ
+     */
     static printMessage(text) {
         Message.messageView.innerHTML = text;
     }
-    // メッセージを追加
+    /**
+     * 表示するメッセージを追加する
+     * @param text 表示するメッセージ
+     */
     static addMessage(text) {
         Message.messageView.innerHTML += text;
     }
 }
+Message.parameterView = document.getElementById('parameterView');
 Message.messageView = document.getElementById('messageView');
+Message.enemyImageView = document.getElementById('enemyImageView');
 export default Message;
